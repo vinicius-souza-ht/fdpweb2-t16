@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/usucontroller")
-//@CrossOrigin(origins = {"*"} )
+@CrossOrigin(origins = {"*"} )
 public class UsuarioController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
 
 
+    
     @PostMapping
     public Usuario inserir(@RequestBody Usuario usuario){
         return usuarioRepository.save(usuario);
@@ -25,7 +26,7 @@ public class UsuarioController {
 
     @PutMapping
     public Usuario alterar(@RequestBody Usuario usuario){
-        return usuarioRepository.save(usuario);
+    	return usuarioRepository.save(usuario);
     }
 
     @DeleteMapping("/{id}")
