@@ -16,6 +16,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
     List<Usuario> findByPerfilDescricao(String descricao);
 
     List<Usuario> buscarPorPerfil(String descricaoPerfil );
+
+//    List<Usuario> buscarPorEmail(String email);
     
     @Query("select new Usuario(u.id,u.nome, u.email) from Usuario u where u.perfil.id=?1")
     List<Usuario> findByPerfilId(Integer id);

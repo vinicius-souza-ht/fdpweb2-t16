@@ -1,14 +1,8 @@
 package br.com.fabricadeprogramador.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 
@@ -29,10 +23,12 @@ public class Usuario {
 	
 	private String nome;
 	private String email;
+
+//	@JsonIgnore
 	private String senha;
 	
 	@JoinColumn
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Perfil perfil;
 
 	// Construtor

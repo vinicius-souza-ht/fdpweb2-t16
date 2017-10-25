@@ -38,13 +38,20 @@
 		el:'#app',
 		data:{
 			usuarios:[] ,
-			usuario: { id:'',  nome: '', email:'',  senha: '' }
+			usuario: { id:'',  nome: '', email:'',  senha: '' },
+			perfis:[]
 		},
 		created: function () {
             this.$http.get("http://localhost:8081/usucontroller").then(function (response) {
                 this.usuarios = response.body;
             }, function (response) {
-                console.log("nao funcionou GET");
+                console.log("nao funcionou GET de Usuarios");
+            })
+
+			this.$http.get("http://localhost:8081/perfil/todos").then(function (response) {
+				this.perfis = response.body;
+            }, function (response) {
+				console.log("Nao Funcionou o GET de Perfil");
             })
         },
 		methods:{
