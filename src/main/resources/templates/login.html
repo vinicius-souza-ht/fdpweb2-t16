@@ -1,0 +1,41 @@
+<html>
+<header>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
+</header>
+
+<body>
+
+    <div id="login">
+        <label>Username</label>
+        <input type="text" v-model:"usuario.username">
+
+        <label>Password</label>
+        <input type="password" v-model:"usuario.password">
+
+        <button v-on:click="autenticar">Autenticar</button>
+    </div>
+
+</body>
+
+<script>
+
+    var app = new Vue({
+        el: '#login',
+        data: {
+            usuario: { username:"", password:"" }
+        },
+        methods:{
+            autenticar:function(){
+                this.$http.post("http://localhost:8081/login",this.usuario)
+                    .then(function(res) {
+                        window.alert("POST login funcionou!");
+                    }, function (res){
+                      window.alert(res.mensagem);
+                    });
+            }
+        }
+    })
+</script>
+
+</html>

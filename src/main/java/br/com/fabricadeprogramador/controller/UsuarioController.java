@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/usucontroller")
+@RequestMapping("/protected/usucontroller")
 @CrossOrigin(origins = {"*"} )
 public class UsuarioController {
 	

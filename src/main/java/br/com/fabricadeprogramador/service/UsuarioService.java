@@ -47,4 +47,8 @@ public class UsuarioService {
     public Usuario buscarPorId(Integer id){
         return usuarioRepository.findOne(id);
     }
+    
+    public List<Usuario> autenticar(Usuario usuario) {
+    	return usuarioRepository.findByNomeAndSenha(usuario.getNome(), usuario.getSenha());
+    }
 }
